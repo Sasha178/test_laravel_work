@@ -5,6 +5,7 @@
  use App\Http\Controllers\Admin\PostsController;
  use App\Http\Controllers\Admin\TagsController;
  use App\Http\Controllers\Admin\UsersController;
+ use App\Http\Controllers\HomeController;
  use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,7 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::prefix('admin')->group(function () {
     Route::resource('/', DashbordController::class);
