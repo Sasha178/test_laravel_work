@@ -15,8 +15,15 @@ class Post extends Model
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
-    protected $fillable = ['title', 'content', 'date'];
+    protected $fillable = ['title', 'slug', 'content', 'date'];
 
+
+    protected static function boot() {
+        parent::boot();
+        static::creating(function ($post) {
+            $post->slug = Str::slug($post->title);
+        });
+    }
 
     public function category()
     {

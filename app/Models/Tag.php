@@ -12,6 +12,13 @@ class Tag extends Model
 
     protected $fillable = ['title'];
 
+    protected static function boot() {
+        parent::boot();
+        static::creating(function ($tag) {
+            $tag->slug = Str::slug($tag->title);
+        });
+    }
+
     public function posts()
     {
         return $this->belongsToMany(
@@ -22,8 +29,5 @@ class Tag extends Model
 
         );
     }
-//    public function sluggable()
-//    {
-//        return Str::slug('slug');
-//    }
+
 }

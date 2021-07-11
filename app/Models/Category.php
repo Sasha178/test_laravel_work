@@ -10,7 +10,14 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'slug'];
+
+    protected static function boot() {
+        parent::boot();
+        static::creating(function ($category) {
+            $category->slug = Str::slug($category->title);
+        });
+    }
 
     public function posts()
     {
@@ -20,4 +27,5 @@ class Category extends Model
     {
         return Str::slug( 'title');
     }
+
 }

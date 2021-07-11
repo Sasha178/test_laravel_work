@@ -34,7 +34,7 @@
                                     <td>{{$post->getCategoryTitle()}}</td>
                                     <td>{{ $post->getTagsTitles() }}</td>
                                     <td>
-                                        <img src="{{$post->getImage()}}" alt="" class="img-responsive" width="150">
+                                        <img src="/img/{{$post->image}}" alt="" class="img-responsive" width="150">
                                     </td>
                                     <td><i class="bi bi-pencil"><a
                                                 href="{{ route('posts.edit', $post->id) }}">&#9999;</a></i>
